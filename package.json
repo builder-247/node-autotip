@@ -1,0 +1,17 @@
+{
+  "name": "node-autotip",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "node index --dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "builder_247",
+  "license": "ISC",
+  "dependencies": {
+    "mineflayer": "^2.6.1",
+    "request": "^2.83.0"
+  }
+}
