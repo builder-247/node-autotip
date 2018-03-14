@@ -28,7 +28,7 @@ function randomVersion() {
         "1.12.0",
         "1.12.1",
     ];
-    return supportedVersions[getRndInteger(0, supportedVersions.length)]
+    return supportedVersions[getRndInteger(0, supportedVersions.length - 1)]
 }
 
 module.exports = {
