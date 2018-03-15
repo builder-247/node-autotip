@@ -32,6 +32,6 @@ function randomVersion() {
 }
 
 module.exports = {
-    randomDelay,
+    getRndInteger,
     randomVersion
 };
