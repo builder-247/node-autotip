@@ -1,5 +1,6 @@
 const mineflayer = require("mineflayer");
 const utility = require("./util/Utility");
+const login = require("./lib/login");
 const logger = require("./lib/logger");
 const tracker = require("./lib/tracker");
 const credentials = require("./credentials.json");
@@ -34,7 +35,9 @@ let uuid;
 bot.on(`login`, () => {
     logger.info(`Logged on ${options.host}:${options.port}`);
     setTimeout(() => {
+        const session = bot._client.session;
         uuid = getUUID(bot);
+        login.login(uuid, session);
         tipAll();
     }, 1000);
     setInterval(function () {
