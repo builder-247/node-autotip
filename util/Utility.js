@@ -2,6 +2,10 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+function removeDashes(string) {
+    return string.replace(/-/g, "")
+}
+
 function randomVersion() {
     const supportedVersions = [
         "1.8.0",
@@ -33,5 +37,6 @@ function randomVersion() {
 
 module.exports = {
     getRndInteger,
+    removeDashes,
     randomVersion
 };
