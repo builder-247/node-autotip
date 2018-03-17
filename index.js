@@ -31,13 +31,18 @@ function tipAll() {
     logger.info("Running /tipall...");
     bot.chat(`/tipall`);
 }
+
 let uuid;
+let autotipSession;
+
 bot.on(`login`, () => {
     logger.info(`Logged on ${options.host}:${options.port}`);
     setTimeout(() => {
         const session = bot._client.session;
         uuid = getUUID(bot);
-        login.login(uuid, session);
+        login.login(uuid, session, (aSession) => {
+            autotipSession = aSession;
+        });
         tipAll();
     }, 1000);
     setInterval(function () {
