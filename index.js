@@ -3,6 +3,7 @@ const utility = require("./util/Utility");
 const login = require("./lib/login");
 const logger = require("./lib/logger");
 const tracker = require("./lib/tracker");
+const tipper = require("./lib/tipper");
 const credentials = require("./credentials.json");
 const options = {
     host: "mc.hypixel.net",
@@ -43,7 +44,7 @@ bot.on(`login`, () => {
         login.login(uuid, session, (aSession) => {
             autotipSession = aSession;
         });
-        tipAll();
+        tipper(bot);
     }, 1000);
     setInterval(function () {
         tipAll()
