@@ -11,6 +11,7 @@
   "author": "builder_247",
   "license": "ISC",
   "dependencies": {
+    "big-integer": "^1.6.26",
     "mineflayer": "^2.6.1",
     "request": "^2.83.0"
   }

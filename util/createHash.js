@@ -28,7 +28,6 @@ function performTwosCompliment(buffer) {
     }
 }
 
-module.exports = () => {
-    // TODO
-    //return mcHexDigest()
+module.exports = (str) => {
+    return mcHexDigest(str)
 };
