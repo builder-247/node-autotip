@@ -28,11 +28,6 @@ function getUUID(bot) {
     return bot.players[bot.username].uuid
 }
 
-function tipAll() {
-    logger.info("Running /tipall...");
-    bot.chat(`/tipall`);
-}
-
 let uuid;
 let autotipSession;
 
@@ -43,12 +38,9 @@ bot.on(`login`, () => {
         uuid = getUUID(bot);
         login.login(uuid, session, (aSession) => {
             autotipSession = aSession;
+            tipper.initTipper(bot, autotipSession);
         });
-        tipper(bot);
     }, 1000);
-    setInterval(function () {
-        tipAll()
-    }, 15000 * 60)
 });
 
 bot.on('message', (message) => {
