@@ -33,6 +33,7 @@ let autotipSession;
 
 bot.on(`login`, () => {
     uuid = getUUID(bot);
+    logger.initLog();
     logger.info(`Logged on ${options.host}:${options.port}`);
     setTimeout(() => {
         const session = bot._client.session;

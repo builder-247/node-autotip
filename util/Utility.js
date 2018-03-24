@@ -6,6 +6,10 @@ function removeDashes(string) {
     return string.replace(/-/g, "")
 }
 
+function removeANSIFormatting(string) {
+    return string.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, "")
+}
+
 function randomVersion() {
     const supportedVersions = [
         "1.8.0",
@@ -38,5 +42,6 @@ function randomVersion() {
 module.exports = {
     getRndInteger,
     removeDashes,
+    removeANSIFormatting,
     randomVersion
 };
