@@ -25,17 +25,18 @@ function init() {
 }
 
 function getUUID(bot) {
-    return bot.players[bot.username].uuid
+    return bot._client.session.selectedProfile.id;
 }
 
 let uuid;
 let autotipSession;
 
 bot.on(`login`, () => {
+    uuid = getUUID(bot);
     logger.info(`Logged on ${options.host}:${options.port}`);
     setTimeout(() => {
         const session = bot._client.session;
-        uuid = getUUID(bot);
+
         login.login(uuid, session, (aSession) => {
             autotipSession = aSession;
             tipper.initTipper(bot, autotipSession);
