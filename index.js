@@ -34,6 +34,7 @@ let autotipSession;
 bot.on(`login`, () => {
     uuid = getUUID(bot);
     logger.initLog();
+    tracker.initTracker(uuid);
     logger.info(`Logged on ${options.host}:${options.port}`);
     setTimeout(() => {
         const session = bot._client.session;
@@ -46,7 +47,7 @@ bot.on(`login`, () => {
 });
 
 bot.on('message', (message) => {
-    tracker(message, uuid);
+    // tracker(message, uuid);
     logger.game(message.toAnsi())
 });
 
