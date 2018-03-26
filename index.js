@@ -54,3 +54,20 @@ bot.on('message', (message) => {
 bot.on('kicked', (reason) => {
     logger.info(`Kicked for ${reason}`)
 });
+
+function gracefulShutdown() {
+    logger.info('Received kill signal, shutting down gracefully.');
+    autotipSession.logOut(() => {
+        logger.info('Closed out remaining connections.');
+        process.exit();
+    });
+    // if after
+    setTimeout(() => {
+        logger.error('Could not close connections in time, forcefully shutting down');
+        process.exit();
+    }, 10 * 1000);
+}
+// listen for TERM signal .e.g. kill
+process.once('SIGTERM', gracefulShutdown);
+// listen for INT signal e.g. Ctrl-C
+process.once('SIGINT', gracefulShutdown);
