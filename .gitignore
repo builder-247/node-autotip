@@ -1,6 +1,6 @@
 /.idea/
 /test/
 /node_modules/
-/logs/*.log
+/logs/
 /stats/*/*
 credentials.json
