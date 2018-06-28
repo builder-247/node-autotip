@@ -49,8 +49,10 @@ bot.on('login', () => {
 });
 
 bot.on('message', (message) => {
-  // tracker(message, uuid);
   logger.game(message.toAnsi());
+  if (message.toString().startsWith('You tipped')) {
+    tracker.tipIncrement();
+  }
 });
 
 bot.on('kicked', (reason) => {
