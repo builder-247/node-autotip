@@ -14,17 +14,16 @@ const options = {
   password: credentials.password,
 };
 let bot;
-function init() {
+(function init() {
   bot = mineflayer.createBot(options);
   bot._client.once('session', session => options.session = session);
   bot.once('end', () => {
     setTimeout(() => {
       logger.info('Reconnecting...');
       init();
-    }, 30000);
+    }, 60000);
   });
-}
-init();
+}());
 
 function getUUID() {
   return bot._client.session.selectedProfile.id;
