@@ -40,7 +40,7 @@ bot.on('login', () => {
   setTimeout(() => {
     const { session } = bot._client;
 
-    login.login(uuid, session, (aSession) => {
+    login(uuid, session, (aSession) => {
       autotipSession = aSession;
       tipper.initTipper(bot, autotipSession);
     });
