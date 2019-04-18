@@ -12,15 +12,15 @@
   "author": "builder_247",
   "license": "ISC",
   "dependencies": {
-    "big-integer": "^1.6.26",
-    "mineflayer": "^2.6.1",
-    "request": "^2.83.0"
+    "big-integer": "^1.6.43",
+    "mineflayer": "^2.7.5",
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1"
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
   }
 }
