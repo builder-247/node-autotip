@@ -48,9 +48,13 @@ bot.on('login', () => {
 });
 
 bot.on('message', (message) => {
+  const msg = message.toString();
   logger.game(message.toAnsi());
-  if (message.toString().startsWith('You tipped')) {
+  if (msg.startsWith('You tipped')) {
     tracker.tipIncrement();
+  }
+  if (msg.startsWith('That player is not online, try another user!')) {
+    tipper.tipFailed();
   }
 });
 
