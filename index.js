@@ -29,6 +29,11 @@ function getUUID() {
   return bot._client.session.selectedProfile.id;
 }
 
+function sendToLimbo() {
+  logger.info('Sending player to limbo...');
+  bot.chat('/achat §c');
+}
+
 let uuid;
 let autotipSession;
 
@@ -39,7 +44,7 @@ bot.on('login', () => {
   logger.info(`Logged on ${options.host}:${options.port}`);
   setTimeout(() => {
     const { session } = bot._client;
-
+    sendToLimbo();
     login(uuid, session, (aSession) => {
       autotipSession = aSession;
       tipper.initTipper(bot, autotipSession);
