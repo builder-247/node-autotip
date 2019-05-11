@@ -1,6 +1,6 @@
 {
   "name": "node-autotip",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,11 +10,14 @@
     "lintnofix": "eslint . --ext .js,.jsx"
   },
   "author": "builder_247",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "big-integer": "^1.6.43",
+    "dotenv": "^8.0.0",
+    "jsonfile": "^5.0.0",
     "mineflayer": "^2.7.5",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
