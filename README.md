@@ -1,3 +1,5 @@
+<img src="https://repository-images.githubusercontent.com/124889265/21280080-7431-11e9-92d0-2a2eefcc1051" alt="node-autotip" />
+
 ## About
 
 node-autotip is command-line based version of the Forge mod [Autotip](https://github.com/Semx11/Autotip) (by [Semx11](https://hypixel.net/members/semx11.20123), [2Pi](https://hypixel.net/members/2pi.22108) and [Sk1er](https://hypixel.net/members/sk1er.199731)).
