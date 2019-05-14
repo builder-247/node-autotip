@@ -58,6 +58,7 @@ function chatLogger(message) {
     'A kick occurred in your connection, so you have been routed to limbo!',
     'Illegal characters in chat',
     'That player is not online, try another user!',
+    'No one has a network booster active right now! Try again later.',
     'You already tipped everyone that has boosters active, so there isn\'t anybody to be tipped right now!',
     'You\'ve already tipped someone in the past hour in',
   ];
@@ -103,7 +104,7 @@ bot.on('message', (message) => {
     const tips = (/tipped \w* players in (\d*)/.exec(msg) !== null)
       ? /tipped \w* players in (\d*)/.exec(msg)[1]
       : 1;
-    const karma = (arr.some(line => line.includes('Quakecraft')))
+    const karma = (tips >= 1 && arr.some(line => line.includes('Quakecraft')))
       ? (tips - 5) * config.TIP_KARMA
       : tips * config.TIP_KARMA;
     arr.push(`§d+${karma} Karma`);
@@ -116,7 +117,8 @@ bot.on('message', (message) => {
     tipIncrement(uuid, { type: 'received', amount: tips }, arr);
     logRewards(arr);
   }
-  if (msg.startsWith('That player is not online, try another user!')) {
+  if (msg.startsWith('That player is not online, try another user!')
+    || msg.startsWith('You\'ve already tipped that person today')) {
     tipper.tipFailed();
   }
 });
@@ -127,10 +129,16 @@ bot.on('kicked', (reason) => {
 
 function gracefulShutdown() {
   logger.info('Received kill signal, shutting down gracefully.');
-  autotipSession.logOut(() => {
-    logger.info('Closed out remaining connections.');
+  try {
+    autotipSession.logOut(() => {
+      logger.info('Closed out remaining connections.');
+      process.exit();
+    });
+  } catch (e) {
+    logger.warn('Closing without establishing autotip session.');
     process.exit();
-  });
+  }
+
   // if after
   setTimeout(() => {
     logger.error('Could not close connections in time, forcefully shutting down');
