@@ -104,7 +104,7 @@ bot.on('message', (message) => {
     const tips = (/tipped \w* players in (\d*)/.exec(msg) !== null)
       ? /tipped \w* players in (\d*)/.exec(msg)[1]
       : 1;
-    const karma = (tips >= 1 && arr.some(line => line.includes('Quakecraft')))
+    const karma = (tips > 1 && arr.some(line => line.includes('Quakecraft')))
       ? (tips - 5) * config.TIP_KARMA
       : tips * config.TIP_KARMA;
     arr.push(`§d+${karma} Karma`);
