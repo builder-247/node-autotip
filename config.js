@@ -11,6 +11,7 @@ const defaults = {
   PRINT_REWARDS: true, // Whether tip rewards like coins and xp should be logged
   HIDE_TIP_MESSAGES: true, // Hide chat spam from tipping
   HIDE_JOIN_MESSAGES: true, // Hide player join messages
+  HIDE_WATCHDOG_MESSAGES: true, // Hide [WATCHDOG CHEAT DETECTION] messages
 };
 
 // ensure that process.env has all values in defaults, but prefer the process.env value
