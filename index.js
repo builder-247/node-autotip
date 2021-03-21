@@ -112,8 +112,12 @@ function onMessage(message) {
   }
   if (msg.startsWith('You were tipped')) {
     const arr = getHoverData(message);
-    const tips = /by (\d*) players/.exec(msg)[1];
-    tipIncrement(uuid, { type: 'received', amount: tips }, arr);
+    try {
+      const tips = /by (\d*) players/.exec(msg)[1];
+      tipIncrement(uuid, { type: 'received', amount: tips }, arr);
+    } catch (e) {
+      //
+    }
     logRewards(arr);
   }
   if (msg.startsWith('That player is not online, try another user!')
