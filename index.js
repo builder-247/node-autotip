@@ -125,7 +125,7 @@ function onMessage(message) {
 (function init() {
   bot = mineflayer.createBot(options);
   bot._client.once('session', session => options.session = session);
-  bot.on('login', onLogin);
+  bot.once('login', onLogin);
   bot.on('message', onMessage);
   bot.on('kicked', (reason) => {
     logger.info(`Kicked for ${reason}`);
