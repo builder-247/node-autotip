@@ -113,7 +113,7 @@ function onMessage(message) {
   if (msg.startsWith('You were tipped')) {
     const arr = getHoverData(message);
     try {
-      const tips = /by (\d*) players/.exec(msg)[1];
+      const tips = /by (\d*) players?/.exec(msg)[1];
       tipIncrement(uuid, { type: 'received', amount: tips }, arr);
     } catch (e) {
       //
