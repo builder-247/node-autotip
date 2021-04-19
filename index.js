@@ -88,10 +88,12 @@ function onLogin() {
   setTimeout(() => {
     const { session } = bot._client;
     sendToLimbo();
-    login(uuid, session, (aSession) => {
-      autotipSession = aSession;
-      tipper.initTipper(bot, autotipSession);
-    });
+    if (autotipSession === undefined) {
+      login(uuid, session, (aSession) => {
+        autotipSession = aSession;
+        tipper.initTipper(bot, autotipSession);
+      });
+    }
   }, 1000);
 }
 
