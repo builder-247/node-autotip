@@ -91,9 +91,10 @@ function onLogin() {
     if (autotipSession === undefined) {
       login(uuid, session, (aSession) => {
         autotipSession = aSession;
-        tipper.initTipper(bot, autotipSession);
+        return tipper.initTipper(bot, autotipSession);
       });
     }
+    tipper.initTipper(bot, autotipSession);
   }, 1000);
 }
 
