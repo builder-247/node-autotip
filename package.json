@@ -1,6 +1,6 @@
 {
   "name": "node-autotip",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,15 +15,18 @@
     "big-integer": "^1.6.43",
     "dotenv": "^8.0.0",
     "jsonfile": "^5.0.0",
-    "mineflayer": "^2.7.5",
+    "mineflayer": "^3.11.2",
     "request": "^2.88.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.2",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
