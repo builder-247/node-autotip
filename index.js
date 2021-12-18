@@ -16,6 +16,7 @@ const options = {
   host: 'mc.hypixel.net',
   port: 25565,
   version: '1.8.9',
+  auth: credentials.legacy ? 'mojang' : 'microsoft',
   username: credentials.username,
   password: credentials.password,
 };
