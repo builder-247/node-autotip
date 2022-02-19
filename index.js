@@ -27,7 +27,7 @@ function getUUID() {
 
 function sendToLimbo() {
   logger.info('Sending player to limbo...');
-  bot.chat('/achat §c');
+  bot._client.write('chat', { message: '§' });
 }
 
 function getHoverData(message) {
