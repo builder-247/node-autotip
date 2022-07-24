@@ -25,6 +25,11 @@ function getUUID() {
   return bot._client.session.selectedProfile.id;
 }
 
+function setlang() {
+  logger.info('Changing language.');
+  bot._client.write('chat', { message: '/lang ' + config.CHANGE_LANGUAGE });
+}
+
 function sendToLimbo() {
   logger.info('Sending player to limbo...');
   bot._client.write('chat', { message: '§' });
@@ -82,6 +87,7 @@ function chatLogger(message) {
 
 function onLogin() {
   uuid = getUUID(bot);
+  setlang();
   logger.debug(`Logged on ${options.host}:${options.port}`);
   getLifetimeStats(uuid, (stats) => {
     logger.info(util.toANSI(stats));
