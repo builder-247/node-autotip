@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle, no-return-assign */
 const mineflayer = require('mineflayer');
+const wait = require('util').promisify(setTimeout);
 const config = require('./config');
 const login = require('./lib/login');
 const logger = require('./lib/logger');
@@ -23,6 +24,11 @@ const options = {
 
 function getUUID() {
   return bot._client.session.selectedProfile.id;
+}
+
+function setLang(language = 'english') {
+  logger.info(`Changing language to ${language}`);
+  bot.chat(`/lang ${language}`);
 }
 
 function sendToLimbo() {
@@ -82,6 +88,7 @@ function chatLogger(message) {
 
 function onLogin() {
   uuid = getUUID(bot);
+  setLang();
   logger.debug(`Logged on ${options.host}:${options.port}`);
   getLifetimeStats(uuid, (stats) => {
     logger.info(util.toANSI(stats));
@@ -141,8 +148,14 @@ function onMessage(message) {
   bot.once('end', () => setTimeout(init, 10000));
 }());
 
-function gracefulShutdown() {
+async function gracefulShutdown() {
   logger.info('Received kill signal, shutting down gracefully.');
+  // Change language to a preferred one. Need to leave limbo first to run the command.
+  bot.chat('/hub');
+  await wait(1000);
+  setLang(config.CHANGE_LANGUAGE);
+  await wait(1000);
+
   try {
     autotipSession.logOut(() => {
       logger.info('Closed out remaining connections.');
