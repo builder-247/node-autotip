@@ -26,7 +26,7 @@ function getUUID() {
   return bot._client.session.selectedProfile.id;
 }
 
-function setLang(language = 'english') {
+function setLang(language = config.CHANGE_LANGUAGE) {
   logger.info(`Changing language to ${language}`);
   bot.chat(`/lang ${language}`);
 }
