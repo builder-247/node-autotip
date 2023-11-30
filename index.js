@@ -132,7 +132,8 @@ function onMessage(message) {
     logRewards(arr);
   }
   if (msg.startsWith('That player is not online, try another user!')
-    || msg.startsWith('You\'ve already tipped that person today')) {
+    || msg.startsWith('You\'ve already tipped that person today')
+    || msg.startsWith('Can\'t find a player by the name of')) {
     tipper.tipFailed();
   }
 }
