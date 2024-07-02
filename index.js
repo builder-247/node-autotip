@@ -17,8 +17,7 @@ const options = {
   port: 25565,
   version: '1.8.9',
   auth: 'microsoft',
-  username: credentials.username,
-  password: credentials.password,
+  username: credentials.email,
 };
 
 function getUUID() {
