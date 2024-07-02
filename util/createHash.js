@@ -30,4 +30,4 @@ function mcHexDigest(str) {
   return digest;
 }
 
-module.exports = str => mcHexDigest(str);
+module.exports = (str) => mcHexDigest(str);

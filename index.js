@@ -75,10 +75,10 @@ function chatLogger(message) {
     }
   }
   if (config.HIDE_WATCHDOG_MESSAGES) {
-    if (/^\[WATCHDOG ANNOUNCEMENT]$/.test(str) ||
-      /^Watchdog has banned [0-9,]+ players in the last 7 days\.$/.test(str) ||
-      /^Staff have banned an additional [0-9,]+ in the last 7 days\.$/.test(str) ||
-      /^Blacklisted modifications are a bannable offense!$/.test(str) || str === '') {
+    if (/^\[WATCHDOG ANNOUNCEMENT]$/.test(str)
+      || /^Watchdog has banned [0-9,]+ players in the last 7 days\.$/.test(str)
+      || /^Staff have banned an additional [0-9,]+ in the last 7 days\.$/.test(str)
+      || /^Blacklisted modifications are a bannable offense!$/.test(str) || str === '') {
       logger.debug(ansi);
       return;
     }
@@ -114,7 +114,7 @@ function onMessage(message) {
     const tips = (/tipped \w* players in (\d*)/.exec(msg) !== null)
       ? /tipped \w* players in (\d*)/.exec(msg)[1]
       : 1;
-    const karma = (tips > 1 && arr.some(line => line.includes('Quakecraft')))
+    const karma = (tips > 1 && arr.some((line) => line.includes('Quakecraft')))
       ? (tips - 5) * config.TIP_KARMA
       : tips * config.TIP_KARMA;
     arr.push(`§d+${karma} Karma`);
@@ -140,7 +140,7 @@ function onMessage(message) {
 
 (function init() {
   bot = mineflayer.createBot(options);
-  bot._client.once('session', session => options.session = session);
+  bot._client.once('session', (session) => options.session = session);
   bot.once('login', onLogin);
   bot.on('message', onMessage);
   bot.on('kicked', (reason) => {
