@@ -12,21 +12,18 @@
   "author": "builder_247",
   "license": "MIT",
   "dependencies": {
-    "big-integer": "^1.6.43",
-    "dotenv": "^8.0.0",
-    "jsonfile": "^5.0.0",
-    "mineflayer": "^3.11.2",
+    "big-integer": "^1.6.52",
+    "dotenv": "^16.4.5",
+    "jsonfile": "^6.1.0",
+    "mineflayer": "^4.20.1",
     "request": "^2.88.0",
-    "winston": "^3.2.1"
+    "winston": "^3.13.0"
   },
   "devDependencies": {
-    "eslint": "^8.5.0",
-    "eslint-config-airbnb": "^19.0.2",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }
