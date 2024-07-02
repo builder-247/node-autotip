@@ -1,13 +1,15 @@
 /* eslint-disable no-control-regex */
-function getRndInteger(min, max) {
+import util from 'util';
+
+export function getRndInteger(min, max) {
   return Math.floor(Math.random() * ((max - min) + 1)) + min;
 }
 
-function removeDashes(string) {
+export function removeDashes(string) {
   return string.replace(/-/g, '');
 }
 
-function toANSI(src = '') {
+export function toANSI(src = '') {
   const codes = {
     '§0': '\u001b[30m',
     '§1': '\u001b[34m',
@@ -39,13 +41,8 @@ function toANSI(src = '') {
   return message;
 }
 
-function removeANSIFormatting(string) {
+export function removeANSIFormatting(string) {
   return string.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
 }
 
-module.exports = {
-  getRndInteger,
-  removeDashes,
-  toANSI,
-  removeANSIFormatting,
-};
+export const wait = util.promisify(setTimeout);

@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise */
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 function performTwosCompliment(buffer) {
   let carry = true;
@@ -30,4 +30,4 @@ function mcHexDigest(str) {
   return digest;
 }
 
-module.exports = (str) => mcHexDigest(str);
+export default mcHexDigest;

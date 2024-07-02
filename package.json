@@ -3,6 +3,7 @@
   "version": "3.1.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index",
     "dev": "node index --dev",

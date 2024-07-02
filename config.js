@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
-const fs = require('fs');
+import dotenv from 'dotenv';
+import fs from 'fs';
 
 if (fs.existsSync('.env')) {
   dotenv.config();
@@ -20,4 +20,4 @@ Object.keys(defaults).forEach((key) => {
   process.env[key] = (key in process.env) ? process.env[key] : defaults[key];
 });
 // now processes can use either process.env or config
-module.exports = process.env;
+export default process.env;

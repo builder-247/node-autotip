@@ -1,13 +1,12 @@
 /* eslint-disable no-underscore-dangle, no-return-assign */
-const mineflayer = require('mineflayer');
-const wait = require('util').promisify(setTimeout);
-const config = require('./config');
-const login = require('./lib/login');
-const logger = require('./lib/logger');
-const { tipIncrement, getLifetimeStats } = require('./lib/tracker');
-const tipper = require('./lib/tipper');
-const util = require('./util/utility');
-const credentials = require('./credentials.json');
+import mineflayer from 'mineflayer';
+import config from './config.js';
+import login from './lib/login.mjs';
+import logger from './lib/logger.mjs';
+import { tipIncrement, getLifetimeStats } from './lib/tracker.mjs';
+import { initTipper, tipFailed } from './lib/tipper.mjs';
+import { wait, toANSI } from './util/utility.mjs';
+import credentials from './credentials.json' assert { type: "json" };
 
 let bot;
 let uuid;
@@ -45,7 +44,7 @@ function getHoverData(message) {
 function logRewards(arr = []) {
   if (config.PRINT_REWARDS) {
     arr.forEach((line) => {
-      logger.game(util.toANSI(`${line}§r`));
+      logger.game(toANSI(`${line}§r`));
     });
   }
 }
@@ -91,7 +90,7 @@ function onLogin() {
   setLang();
   logger.debug(`Logged on ${options.host}:${options.port}`);
   getLifetimeStats(uuid, (stats) => {
-    logger.info(util.toANSI(stats));
+    logger.info(toANSI(stats));
   });
   setTimeout(() => {
     const { session } = bot._client;
@@ -99,10 +98,10 @@ function onLogin() {
     if (autotipSession === undefined) {
       login(uuid, session, (aSession) => {
         autotipSession = aSession;
-        return tipper.initTipper(bot, autotipSession);
+        return initTipper(bot, autotipSession);
       });
     }
-    tipper.initTipper(bot, autotipSession);
+    initTipper(bot, autotipSession);
   }, 1000);
 }
 
@@ -134,7 +133,7 @@ function onMessage(message) {
   if (msg.startsWith('That player is not online, try another user!')
     || msg.startsWith('You\'ve already tipped that person today')
     || msg.startsWith('Can\'t find a player by the name of')) {
-    tipper.tipFailed();
+    tipFailed();
   }
 }
 
