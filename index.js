@@ -84,21 +84,18 @@ function chatLogger(message) {
   logger.game(ansi);
 }
 
-function onLogin() {
+async function onLogin() {
   uuid = getUUID(bot);
   setLang();
   logger.debug(`Logged on ${options.host}:${options.port}`);
-  getLifetimeStats(uuid, (stats) => {
-    logger.info(toANSI(stats));
-  });
-  setTimeout(() => {
+  const stats = await getLifetimeStats(uuid);
+  logger.info(toANSI(stats));
+  setTimeout(async () => {
     const { session } = bot._client;
     sendToLimbo();
     if (autotipSession === undefined) {
-      login(uuid, session, (aSession) => {
-        autotipSession = aSession;
-        return initTipper(bot, autotipSession);
-      });
+      autotipSession = await login(uuid, session);
+      return initTipper(bot, autotipSession);
     }
     initTipper(bot, autotipSession);
   }, 1000);
