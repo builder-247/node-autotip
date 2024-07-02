@@ -13,7 +13,6 @@
   "author": "builder_247",
   "license": "MIT",
   "dependencies": {
-    "big-integer": "^1.6.52",
     "dotenv": "^16.4.5",
     "jsonfile": "^6.1.0",
     "mineflayer": "^4.20.1",
