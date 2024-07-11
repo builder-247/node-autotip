@@ -29,11 +29,6 @@ function setLang(language = 'english') {
   bot.chat(`/lang ${language}`);
 }
 
-function sendToLimbo() {
-  logger.info('Sending player to limbo...');
-  bot._client.write('chat', { message: '§' });
-}
-
 function getHoverData(message) {
   const arr = message.hoverEvent.value.text.split('\n');
   arr.shift();
@@ -92,7 +87,6 @@ async function onLogin() {
   logger.info(toANSI(stats));
   setTimeout(async () => {
     const { session } = bot._client;
-    sendToLimbo();
     if (autotipSession === undefined) {
       autotipSession = await login(uuid, session);
       return initTipper(bot, autotipSession);
