@@ -95,7 +95,8 @@ async function onLogin() {
   }, 1000);
 }
 
-function onMessage(message) {
+function onMessage(message, position) {
+  if (position !== 'chat') return;
   const msg = message.toString();
   chatLogger(message);
   if (msg.startsWith('You tipped')) {
