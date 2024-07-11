@@ -1,14 +1,14 @@
 {
   "name": "node-autotip",
-  "version": "3.1.0",
-  "description": "",
+  "version": "4.0.0",
+  "description": "Commandline-based autotip client for Hypixel using mineflayer",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index",
     "dev": "node index --dev",
-    "lint": "eslint . --ext .js,.jsx --fix",
-    "lintnofix": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.mjs --fix",
+    "lintnofix": "eslint . --ext .js,.mjs"
   },
   "author": "builder_247",
   "license": "MIT",
@@ -17,7 +17,6 @@
     "dotenv": "^16.4.5",
     "jsonfile": "^6.1.0",
     "mineflayer": "^4.20.1",
-    "request": "^2.88.0",
     "winston": "^3.13.0"
   },
   "devDependencies": {
